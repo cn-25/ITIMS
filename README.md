@@ -1,14 +1,15 @@
-# ITIMS Template
-npm install
-npm install -g nodemon
-nodemon
+# ITIMS Setup (MacOS)
+## Install & run Mongodb
+* brew tap mongodb/brew
+* brew install mongodb-community
+* sudo mkdir -p /System/Volumes/Data/data/db
+* sudo chown -R `id -un` /System/Volumes/Data/data/db
+* brew services run mongodb-community
 
-## Install Mongo
-brew tap mongodb/brew
-brew install mongodb-community
-sudo mkdir -p /System/Volumes/Data/data/db
-sudo chown -R `id -un` /System/Volumes/Data/data/db
-brew services run mongodb-community
+## Install dependencies & run
+* npm install
+* npm install -g nodemon
+* nodemon
 
 # Features
 ### Adding an Asset
