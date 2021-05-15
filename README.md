@@ -5,12 +5,12 @@ An Open-Source Inventory Management System for small businesses. An ideal replac
 * Various metrics to measure the value of your inventory
 * Export data to CSV
 
-## To Do:
+## Roadmap Features to add:
 * Add authentication/SSO
 * Add more asset types & variables (serial numbers, etc.)
 
 
-# ITIMS Setup (MacOS)
+# Setup (MacOS)
 ## Install & run Mongodb
 * brew tap mongodb/brew
 * brew install mongodb-community
