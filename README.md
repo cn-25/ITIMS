@@ -1,3 +1,14 @@
+An Open-Source Inventory Management System for small businesses. An ideal replacement for tracking assets with excel!
+Key Features:
+* Historical records for each asset, which is useful for tracking the lifecyle of the device
+* Various metrics to measure the value of your inventory
+* Export data to CSV
+
+To Do:
+* Add authentication/SSO
+* Add more asset types & variables (serial numbers, etc.)
+
+
 # ITIMS Setup (MacOS)
 ## Install & run Mongodb
 * brew tap mongodb/brew
