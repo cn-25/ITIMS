@@ -22,7 +22,7 @@ To maintain a historical record of the asset's owners
 ![Show Assets](/README_img/show_assets.png)
 
 ### Show Metrics
-![Show Metrics](/README_img/show_Metrics.png)
+![Show Metrics](/README_img/show_metrics.png)
 
 ### Export to CSV
 ![Export to CSV](/README_img/export_to_csv.png)
