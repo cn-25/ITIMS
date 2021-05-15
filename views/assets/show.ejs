@@ -1,0 +1,75 @@
+<% include ../partials/header %>
+  <div class="row"></div>
+  <div class="card col-sm-6 mx-auto">
+    <div class="card-header">
+      Asset Details
+    </div>
+    <div style="padding: 2%;">
+      <p><b>Asset Number:</b> <%= asset.asset_num %></p>
+      <p><b>Device Type:</b> <%= asset.type %></p>
+      <p><b>Purchase Date:</b> <%= asset.purchase_date %></p>
+      <p><b>Purchase Cost:</b> <%= asset.value %></p>
+<!-- Owner 1 -->
+      <table class="table table-striped">
+        <thead><b>Owner # 1</b>
+          <tr>
+            <th style="width:33%">Owner</th>
+            <th style="width:33%">Start Date</th>
+            <th style="width:33%">End Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= asset.owner_01 %></td>
+            <td><%= asset.start_date_01 %></td>
+            <td><%= asset.end_date_01 %></td>
+          </tr>
+        </tbody>
+      </table>
+<!-- Owner 2 -->
+      <table class="table table-striped">
+        <thead><b>Owner # 2</b>
+          <tr>
+            <th style="width:33%">Owner</th>
+            <th style="width:33%">Start Date</th>
+            <th style="width:33%">End Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= asset.owner_02 %></td>
+            <td><%= asset.start_date_02 %></td>
+            <td><%= asset.end_date_02 %></td>
+          </tr>
+        </tbody>
+      </table>
+<!-- Owner 3 -->
+      <table class="table table-striped">
+        <thead><b>Owner # 3</b>
+          <tr>
+            <th style="width:33%">Owner</th>
+            <th style="width:33%">Start Date</th>
+            <th style="width:33%">End Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= asset.owner_03 %></td>
+            <td><%= asset.start_date_03 %></td>
+            <td><%= asset.end_date_03 %></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="padding: 1rem;">
+        <form action="/assets/delete/<%= asset._id%>" method="post">
+          <button class="btn btn-danger" type="submit">Delete</button>
+        </form>
+        <br>
+        <button class="btn btn-success"><a href="/assets/edit/<%= asset._id%>" style="color: white;">Change Ownership</a></button>
+      </div>
+    </div>
+      
+    </div>
+  </div>
+  
+    <% include ../partials/header %>

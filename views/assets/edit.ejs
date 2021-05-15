@@ -1,0 +1,49 @@
+<% include ../partials/header %>
+<div class="row"></div>
+  <div class="card col-sm-6 mx-auto">
+    <div class="card-header">
+      Change Ownership
+    </div>
+    <% if(asset.owner_02 == null){ %>
+              <h2 style="padding:2%;">Setting Owner # 2</h2>
+              <form action="/assets/update_2/<%= asset._id%>" method="post">
+                <div class="mb-3" style="padding: 1rem;">
+                  <label class="form-label fw-bold"> End Date of previous owner</label>
+                  <input type="date" name="end_date_01" class="form-control" %>" />
+                </div>
+              <div class="mb-3" style="padding: 1rem;">
+                <label class="form-label fw-bold"> New Owner</label>
+                <input type="text" name="owner_02" class="form-control" />
+              </div>
+              <div class="mb-3" style="padding: 1rem;">
+                <label class="form-label fw-bold"> Start Date</label>
+                <input type="date" name="start_date_02" class="form-control" />
+              </div>
+              <div class="mb-3" style="padding: 1rem;">
+                <button type="submit" class="btn btn-success">Update</button></td>
+              </div>
+            </form>
+          </div>
+      <% } else {%>
+        <h2 style="padding:2%;">Setting Owner # 3</h2>
+        <form action="/assets/update_3/<%= asset._id%>" method="post">
+          <div class="mb-3" style="padding: 1rem;">
+            <label class="form-label fw-bold"> End Date of previous owner</label>
+            <input type="date" name="end_date_02" class="form-control" %>" />
+          </div>
+        <div class="mb-3" style="padding: 1rem;">
+          <label class="form-label fw-bold"> New Owner</label>
+          <input type="text" name="owner_03" class="form-control" />
+        </div>
+        <div class="mb-3" style="padding: 1rem;">
+          <label class="form-label fw-bold"> Start Date</label>
+          <input type="date" name="start_date_03" class="form-control"" />
+        </div>
+        <div class="mb-3" style="padding: 1rem;">
+          <button type="submit" class="btn btn-success">Update</button></td>
+        </div>
+      </form>
+    </div>
+      <% } %>
+  </div>
+    <% include ../partials/header %>

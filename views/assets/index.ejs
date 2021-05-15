@@ -1,0 +1,36 @@
+<% include ../partials/header %>
+<div class="row"></div>
+  <div class="card col-sm-6 mx-auto">
+    <div class="card-header">
+      All Assets
+    </div>
+      <% if(assets.length>0) { %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Asset Number</th>
+            <th>Type</th>
+            <th>First Owner</th>
+            <th>Purchase Price</th>
+            <th>Starting Date</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <% for(var i=0; i<assets.length;i++) { %>
+            <tr>
+              <td><a href="/assets/show/<%= assets[i]._id%>"><%= assets[i].asset_num%></a></td>
+              <td><%= assets[i].type%></td>
+              <td><%= assets[i].owner_01%></td>
+              <td><%= assets[i].value%></td>
+              <td><%= assets[i].start_date_01%></td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <% } else { %>
+        <div>No assets found.</div>
+      <% } %>
+    </div>
+  </div>
+    <% include ../partials/header %>

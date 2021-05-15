@@ -1,0 +1,54 @@
+<% include ../partials/header %>
+
+  <div class="card col-sm-6 mx-auto">
+    <div class="card-header">
+      Add an Asset
+    </div>
+      <form action="/assets/save" method="post">
+        <div class="mb-3" style="padding: 1rem;">
+          <label class="form-label fw-bold">Device Type</label>
+          <select type="text" name="type" class="form-select" aria-label="Default select example">
+            <option selected>Select Device Type...</option>
+            <option value="Macbook Air">Macbook Air</option>
+            <option value="Macbook Pro">Macbook Pro</option>
+            <option value="iMac">iMac</option>
+            <option value="Mac Pro">Mac Pro</option>
+            <option value="iPhone 11">iPhone 11</option>
+            <option value="iPhone 12">iPhone 12</option>
+          </select>
+        </div>
+        <div class="mb-3" style="padding: 1rem;">
+          <label class="form-label fw-bold">Current Owner</label>
+          <input type="text" name="owner_01" class="form-control" />
+        </div>
+        <div class="mb-3" style="padding: 1rem;">
+          <label class="form-label fw-bold">Purchase Date</label>
+          <input type="date" name="purchase_date" class="form-control" />
+        </div>
+        <div class="mb-3" style="padding: 1rem;">
+          <label class="form-label fw-bold">Start Date</label>
+          <input type="date" name="start_date_01" class="form-control" />
+        </div>
+        <div class="mb-3" style="padding: 1rem;">
+          <label class="form-label fw-bold">Purchase Price</label>
+          <input type="number" name="value" class="form-control" />
+        </div>
+        <% var count = 1 %>
+        <% for(var i=0; i<assets.length;i++) { %>
+          <% if (assets[i].asset_num == null) { %>
+            <% count = 1 %>
+          <% } else { %>
+            <% count++ %>
+          <% } %>
+        <% } %>
+        <input type="hidden" name="asset_num" value="<%-count%>">
+        <div class="mb-3" style="padding: 1rem;">
+          <button type="submit" class="btn btn-primary">Save</button></td>
+        </div>
+      </form>
+    </div>
+    </div>
+  </div>
+  </div>
+
+    <% include ../partials/header %>

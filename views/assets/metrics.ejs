@@ -1,0 +1,289 @@
+<% include ../partials/header %>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col" style="width: 25rem; padding-left: 40px;">
+  <div class="card h-100" style="padding: 0.5rem;">
+    <h5 class="card-title">Assets purchased-per-month</h5>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <% var dataJan = 0 %>
+      <% var dataFeb = 0 %>
+      <% var dataMar = 0 %>
+      <% var dataApr = 0 %>
+      <% var dataMay = 0 %>
+      <% var dataJune = 0 %>
+      <% var dataJuly = 0 %>
+      <% var dataAug = 0 %>
+      <% var dataSept = 0 %>
+      <% var dataOct = 0 %>
+      <% var dataNov = 0 %>
+      <% var dataDec = 0 %>
+      <% for(var i=0; i<assets.length;i++) { %>
+        <% var date = assets[i].purchase_date%>
+        <% var month = date.split('-')%>
+        <% if ((month[1]) == "01") { %>
+          <% dataJan++ %>
+        <% } %>
+        <% if ((month[1]) == "02") { %>
+          <% dataFeb++ %>
+        <% } %>
+        <% if ((month[1]) == "03") { %>
+          <% dataMar++ %>
+        <% } %>
+        <% if ((month[1]) == "04") { %>
+          <% dataApr++ %>
+        <% } %>
+        <% if ((month[1]) == "05") { %>
+          <% dataMay++ %>
+        <% } %>
+        <% if ((month[1]) == "06") { %>
+          <% dataJune++ %>
+        <% } %>
+        <% if ((month[1]) == "07") { %>
+          <% dataJuly++ %>
+        <% } %>
+        <% if ((month[1]) == "08") { %>
+          <% dataAug++ %>
+        <% } %>
+        <% if ((month[1]) == "09") { %>
+          <% dataSept++ %>
+        <% } %>
+        <% if ((month[1]) == "10") { %>
+          <% dataOct++ %>
+        <% } %>
+        <% if ((month[1]) == "11") { %>
+          <% dataNov++ %>
+        <% } %>
+        <% if ((month[1]) == "12") { %>
+          <% dataDec++ %>
+        <% } %>
+      <% } %>
+    <canvas id="byMonth"></canvas>
+    <script>
+    var ctx = document.getElementById('byMonth');
+    var byMonth = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+            datasets: [{
+                label: 'Chart by Month',
+                data: ['<%-dataJan%>','<%-dataFeb%>','<%-dataMar%>','<%-dataApr%>','<%-dataMay%>','<%-dataJune%>','<%-dataJuly%>','<%-dataAug%>','<%-dataSept%>','<%-dataOct%>','<%-dataNov%>','<%-dataDec%>'],
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.4
+            }]
+        },
+    });
+    </script>
+  </div>
+</div>
+
+
+<div class="col" style="width: 25rem;">
+  <div class="card h-100" style="padding: 0.5rem;">
+    <h5 class="card-title">Asset Types</h5>
+      <% var dataMBA = 0 %>
+      <% var dataMBP = 0 %>
+      <% var dataiMac = 0 %>
+      <% var dataMacPro = 0 %>
+      <% var dataiPhone11 = 0 %>
+      <% var dataiPhone12 = 0 %>
+      <% for(var i=0; i<assets.length;i++) { %>
+        <% if (assets[i].type == "Macbook Air") { %>
+          <% dataMBA++ %>
+        <% } %>
+        <% if (assets[i].type == "Macbook Pro") { %>
+          <% dataMBP++ %>
+        <% } %>
+        <% if (assets[i].type == "iMac") { %>
+          <% dataiMac++ %>
+        <% } %>
+        <% if (assets[i].type == "Mac Pro") { %>
+          <% dataMacPro++ %>
+        <% } %>
+        <% if (assets[i].type == "iPhone 11") { %>
+          <% dataiPhone11++ %>
+        <% } %>
+        <% if (assets[i].type == "iPhone 12") { %>
+          <% dataiPhone12++ %>
+        <% } %>
+      <% } %>
+      <canvas id="byType"></canvas>
+      <script>
+        var ctx = document.getElementById('byType');
+        var byType = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['MBA', 'MBP', 'iMac', 'Mac Pro', 'iPhone11', 'iPhone12'],
+                datasets: [{
+                    label: 'Assets Types',
+                    data: ['<%-dataMBA%>','<%-dataMBP%>','<%-dataiMac%>','<%-dataMacPro%>','<%-dataiPhone11%>','<%-dataiPhone12%>'],
+                    backgroundColor: [
+                        'rgba(0, 255, 0, 0.6)',
+                        'rgba(255, 255, 0, 0.6)',
+                        'rgba(0, 255, 255, 0.6)',
+                        'rgba(255, 0, 0, 0.6)',
+                        'rgba(0, 0, 255, 0.6)',
+                        'rgba(255, 0, 255, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(0, 255, 0, 0.6)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+      </script>
+    </div>
+  </div>
+
+<div class="col" style="width: 25rem;">
+  <div class="card h-100" style="padding: 0.5rem;">
+    <h5 class="card-title">Total Value of Inventory</h5>
+      <% var value = 0 %>
+      <% for(var i=0; i<assets.length;i++) { %>
+        <% value = value + assets[i].value %>
+      <% } %>
+      <% console.log(value) %>
+      <h4>$ <%-value%></h4>
+
+      <% var valueMBA = 0 %>
+      <% var valueMBP = 0 %>
+      <% var valueiMac = 0 %>
+      <% var valueMacPro = 0 %>
+      <% var valueiPhone11 = 0 %>
+      <% var valueiPhone12 = 0 %>
+      <% for(var i=0; i<assets.length;i++) { %>
+        <% if (assets[i].type == "Macbook Air") { %>
+          <% valueMBA += assets[i].value %>
+        <% } %>
+        <% if (assets[i].type == "Macbook Pro") { %>
+          <% valueMBP += assets[i].value %>
+        <% } %>
+        <% if (assets[i].type == "iMac") { %>
+          <% valueiMac += assets[i].value %>
+        <% } %>
+        <% if (assets[i].type == "Mac Pro") { %>
+          <% valueMacPro += assets[i].value %>
+        <% } %>
+        <% if (assets[i].type == "iPhone 11") { %>
+          <% valueiPhone11 += assets[i].value %>
+        <% } %>
+        <% if (assets[i].type == "iPhone 12") { %>
+          <% valueiPhone12 += assets[i].value %>
+        <% } %>
+      <% } %>
+      <br><br>
+      <h5><b>Macbook Air: </b> <%-valueMBA%></h5>
+      <h5><b>Macbook Pro: </b> <%-valueMBP%></h5>
+      <h5><b>iMac: </b> <%-valueiMac%></h5>
+      <h5><b>Mac Pro: </b> <%-valueMacPro%></h5>
+      <h5><b>iPhone 11: </b> <%-valueiPhone11%></h5>
+      <h5><b>iPhone 12: </b> <%-valueiPhone12%></h5>
+  </div>
+</div>
+
+<div class="col" style="width: 25rem; padding-left: 40px;">
+<div class="card h-100" style="padding: 0.5rem;">
+  <h5 class="card-title">Assets over Time</h5>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <% var dataJan = 0 %>
+    <% var dataFeb = 0 %>
+    <% var dataMar = 0 %>
+    <% var dataApr = 0 %>
+    <% var dataMay = 0 %>
+    <% var dataJune = 0 %>
+    <% var dataJuly = 0 %>
+    <% var dataAug = 0 %>
+    <% var dataSept = 0 %>
+    <% var dataOct = 0 %>
+    <% var dataNov = 0 %>
+    <% var dataDec = 0 %>
+    <% for(var i=0; i<assets.length;i++) { %>
+      <% var date = assets[i].purchase_date%>
+      <% var month = date.split('-')%>
+      <% if ((month[1]) == "01") { %>
+        <% dataJan++ %>
+      <% } %>
+      <% if ((month[1]) == "02") { %>
+        <% dataFeb++ %>
+      <% } %>
+      <% if ((month[1]) == "03") { %>
+        <% dataMar++ %>
+      <% } %>
+      <% if ((month[1]) == "04") { %>
+        <% dataApr++ %>
+      <% } %>
+      <% if ((month[1]) == "05") { %>
+        <% dataMay++ %>
+      <% } %>
+      <% if ((month[1]) == "06") { %>
+        <% dataJune++ %>
+      <% } %>
+      <% if ((month[1]) == "07") { %>
+        <% dataJuly++ %>
+      <% } %>
+      <% if ((month[1]) == "08") { %>
+        <% dataAug++ %>
+      <% } %>
+      <% if ((month[1]) == "09") { %>
+        <% dataSept++ %>
+      <% } %>
+      <% if ((month[1]) == "10") { %>
+        <% dataOct++ %>
+      <% } %>
+      <% if ((month[1]) == "11") { %>
+        <% dataNov++ %>
+      <% } %>
+      <% if ((month[1]) == "12") { %>
+        <% dataDec++ %>
+      <% } %>
+    <% } %>
+    <% dataFeb = dataFeb + dataJan %>
+    <% dataMar = dataMar + dataFeb %>
+    <% dataApr = dataApr + dataMar %>
+    <% dataMay = dataMay + dataApr %>
+    <% dataJune = dataJune + dataMay %>
+    <% dataJuly = dataJuly + dataJune %>
+    <% dataAug = dataAug + dataJuly %>
+    <% dataSept = dataSept + dataAug %>
+    <% dataOct = dataOct + dataSept %>
+    <% dataNov = dataNov + dataOct %>
+    <% dataDec = dataDec + dataNov %>
+  <canvas id="total"></canvas>
+  <script>
+  var ctx = document.getElementById('total');
+  var total = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+          datasets: [{
+              label: 'Total Asset Purchases',
+              data: ['<%-dataJan%>','<%-dataFeb%>','<%-dataMar%>','<%-dataApr%>','<%-dataMay%>','<%-dataJune%>','<%-dataJuly%>','<%-dataAug%>','<%-dataSept%>','<%-dataOct%>','<%-dataNov%>','<%-dataDec%>'],
+              fill: false,
+              borderColor: 'rgb(75, 192, 192)',
+              tension: 0.4
+          }]
+      },
+      options: {
+            scales: {
+                yAxes: [{
+                  ticks: {
+                    fixedStepSize: 1
+                  }
+              }],
+            }
+        }
+  });
+  </script>
+</div>
+</div>
+
+</div>
+
+<% include ../partials/header %>
