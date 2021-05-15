@@ -34,7 +34,7 @@ To maintain a historical record of the asset's owners
 ### Search Assets
 ![Show Assets](/README_img/show_assets.png)
 
-### USeful Metrics
+### Useful Metrics
 ![Show Metrics](/README_img/show_metrics.png)
 
 ### Export to CSV
