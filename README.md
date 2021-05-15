@@ -27,14 +27,14 @@ An Open-Source Inventory Management System for small businesses. An ideal replac
 ### Adding an Asset
 ![Add Asset](/README_img/add_asset.png)
 
-### Adding an Asset
+### Asset History
 ![Add History](/README_img/asset_history.png)
 To maintain a historical record of the asset's owners
 
-### Show Assets
+### Search Assets
 ![Show Assets](/README_img/show_assets.png)
 
-### Show Metrics
+### USeful Metrics
 ![Show Metrics](/README_img/show_metrics.png)
 
 ### Export to CSV
